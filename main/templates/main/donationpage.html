@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'main/css/donation.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<!-- ============================================================ -->
+<!-- DONATION HERO -->
+<!-- ============================================================ -->
+<section class="donation-hero" id="donation-hero" aria-labelledby="donation-hero-title">
+  <div class="donation-hero__bg" aria-hidden="true"></div>
+
+  <div class="container donation-hero__grid">
+
+    <div class="donation-hero__intro" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Donate</p>
+      <h1 id="donation-hero-title" class="donation-hero__title">
+        On a mission to make sure no one faces hardship, or illness, alone.
+      </h1>
+      <p class="donation-hero__description">
+        When you donate, you're supporting food, housing, and financial relief
+        for families in need and better care and community for people living
+        with Sickle Cell Disease across Scotland.
+      </p>
+    </div>
+
+    <div class="donation-hero__media" data-animate="fade-in" data-animate-delay="150">
+      <img src="{% static 'main/images/donationpic.jpg'%}" alt="Evergreen Hands volunteer at work" class="donation-hero__image">
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHAT YOUR DONATION SUPPORTS -->
+<!-- ============================================================ -->
+
+
+<!-- ============================================================ -->
+<!-- DONATION FORM -->
+<!-- (Reuses the same donation form structure/styles as home.html's -->
+<!-- #donate section: one-time donation only, no Monthly toggle, -->
+<!-- no fabricated progress stats.) -->
+<!-- ============================================================ -->
+
+
+{% include 'main/donationtem.html' %}
+
+
+
+{% endblock %}

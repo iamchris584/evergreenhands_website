@@ -1,0 +1,40 @@
+/* ==========================================================================
+   DONATION PAGE — HERO
+   ========================================================================== */
+.donation-hero { position: relative; overflow: hidden; padding: 100px 0 64px; color: var(--color-white); }
+.donation-hero__bg { position: absolute; inset: 0; background: linear-gradient(180deg, var(--color-green) 0%, #0a120a 100%); z-index: 0; }
+.donation-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.donation-hero__title { font-family: var(--font-heading); font-weight: 700; font-size: clamp(28px, 3.8vw, 42px); line-height: 1.2; margin-bottom: 18px; color: #ffff;}
+.donation-hero__description { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 46ch; text-align: justify;}
+.donation-hero__image { width: 100%; border-radius: var(--radius-lg); aspect-ratio: 483/360; object-fit: cover; box-shadow: var(--shadow-md); }
+.donation-hero__intro .eyebrow{color: #ffff;}
+.eyebrow__line{ color: #c9573b;}
+/* ==========================================================================
+   DONATION PAGE — INTRO STATEMENT
+   ========================================================================== */
+.donation-intro { padding: 64px 0 0; }
+.donation-intro__title { font-family: var(--font-heading); font-weight: 700; font-size: clamp(24px, 3vw, 32px); color: var(--color-text-primary); max-width: 46ch; }
+
+/* ==========================================================================
+   DONATION PAGE — FORM
+   Note: .donation__card / .donation-form / .donation-amount-* reuse the
+   exact styles already defined for the home page's #donate section.
+   ========================================================================== */
+.donation-page-form { padding: 48px 0 96px; }
+.donation-page-form .donation__card { max-width: 550px; margin: 0 auto; }
+
+/* ==========================================================================
+   RESPONSIVE — DONATION PAGE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .donation-hero__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .donation-hero { padding: 80px 0 40px; }
+  .donation-intro { padding: 48px 0 0; }
+  .donation-page-form { padding: 40px 0 64px; }
+}
+
+
+

@@ -1,0 +1,104 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'main/css/contactus.css' %}">
+{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert--{{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+<section class="contact-hero" id="contact-hero" aria-labelledby="contact-hero-title">
+  <div class="contact-hero__bg" style="background-image:url('{% static 'main/images/contactfullpage.jpg' %}');" aria-hidden="true"></div>
+
+  <div class="container contact-hero__grid">
+
+    <div class="contact-hero__intro" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Contact Us</p>
+      <h1 id="contact-hero-title" class="contact-hero__title">We'd love to hear from you</h1>
+      <p class="contact-hero__description">
+        Have a question, need support, or interested in partnering, volunteering, or joining our Board of Trustees? We’d love to hear from you. 
+      </p>
+    </div>
+
+    <div class="contact-hero__details" data-animate="fade-up" data-animate-delay="100">
+      <p class="contact-hero__lets-talk">Let's talk!</p>
+      <p class="contact-hero__detail-line"><a href="tel:+447447466633">+44 7447 466633</a></p>
+      <p class="contact-hero__detail-line"><a href="mailto:info@evergreenhands.org">info@evergreenhands.org</a></p>
+
+      <p class="contact-hero__office-label">Head Office</p>
+      <address class="contact-hero__address">
+        26 Loccie Road, Winchburgh,<br>
+        EH52 6GE, Scotland
+      </address>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTACT FORM -->
+<!-- ============================================================ -->
+<section class="contact-page" id="contact-form-section" aria-label="Contact form">
+  <div id="alert-container"></div>
+  <div class="container">
+     
+    <div class="contact-page__card" data-animate="fade-up">
+      <form class="contact-form" id="contact-form" action="{% url 'contact' %}" method="post" novalidate>
+        {% csrf_token %}
+        <h3>Send us a message today!</h3>
+        
+        <div class="contact-form__row">
+          <div class="contact-form__field">
+            <label for="contact-first-name">First Name</label>
+            <input type="text" id="contact-first-name" name="first_name" placeholder="First name" autocomplete="given-name" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="contact-form__field">
+            <label for="contact-last-name">Last Name</label>
+            <input type="text" id="contact-last-name" name="last_name" placeholder="Last name" autocomplete="family-name" required>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" name="email" placeholder="yourname@email.com" autocomplete="email" required>
+          <span class="field-error"></span>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="contact-phone">Phone Number <span class="contact-form__optional">(optional)</span></label>
+          <input type="tel" id="contact-phone" name="phone_number" placeholder="+44 7XXX XXXXXX" autocomplete="tel">
+          <span class="field-error"></span>
+        </div>
+
+        <div class="contact-form__field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="4" placeholder="Leave us a message..." required></textarea>
+          <span class="field-error"></span>
+        </div>
+
+        <div class="donation-form__checkbox">
+          <input type="checkbox" id="contact-privacy-consent" name="contact_privacy_consent" required>
+          <label for="contact-privacy-consent">I agree to the privacy policy and consent to Evergreen Hands storing my email and phone number to contact me regarding my inquiry..</label>
+          <span class="field-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn--secondary btn--full btn--lg" id="contact-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <div><p></p></div>
+</section>
+
+
+<script src="{% static 'main/js/contact.js' %}"></script>
+
+
+{% endblock %}

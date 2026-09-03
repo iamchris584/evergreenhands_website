@@ -1,0 +1,168 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/mission.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================ -->
+<!-- MISSION HERO -->
+<!-- ============================================================ -->
+<section class="mission-hero" id="mission-hero" aria-labelledby="mission-hero-title">
+  <div class="mission-hero__bg" style="background-image:url('{% static 'main/images/missionBg.png' %}');" aria-hidden="true"></div>
+
+  <div class="container mission-hero__inner" data-animate="fade-up">
+    <!-- Left Column: Eyebrow, Title, Button -->
+    <div class="mission-hero__col-left">
+      <p class="eyebrow eyebrow--on-dark">
+        <span class="eyebrow__line" aria-hidden="true"></span>Why We Exist
+      </p>
+      <h1 id="mission-hero-title" class="mission-hero__title">
+        Driven by Purpose.<br>
+        Rooted in Action<span class="text-accent-alt">.</span>
+      </h1>
+      <a href="{% url 'giving' %}" class="btn btn--primary btn--lg mission-hero__btn">
+          <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        DONATE NOW
+      </a>
+    </div>
+
+    <!-- Right Column: Paragraph Text -->
+    <div class="mission-hero__col-right">
+      <p class="mission-hero__description">
+        {% if mission.mission_hero_description %}
+          {{ mission.mission_hero_description }}
+        {% else %}
+          At Evergreen Hands, we believe no one should face illness or hardship alone.
+          As a registered Scottish Charitable Incorporated Organisation (SCIO) based
+          in Winchburgh, we exist for two connected purposes supporting people
+          living with Sickle Cell Disease, and relieving poverty, with particular
+          focus on asylum seekers and refugees living with the condition.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- MISSION & VISION STATEMENT -->
+<!-- ============================================================ -->
+<section class="mission-statement" id="mission-statement" aria-label="Our mission and vision">
+  <div class="container mission-statement__grid">
+
+    <div class="mission-statement__text" data-animate="fade-up">
+      <div class="mission-statement__block">
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our Mission</p>
+        <p class="mission-statement__body">
+          {% if mission.mission_statement %}
+            {{ mission.mission_statement }}
+          {% else %}
+            To support people living with Sickle Cell Disease and relieve poverty
+            across Scotland, with particular focus on asylum seekers and refugees
+            who face both health and financial hardship at once.
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="mission-statement__block">
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our Vision</p>
+        <p class="mission-statement__body">
+          {% if mission.mission_vision %}
+            {{ mission.mission_vision }}
+          {% else %}
+            A Scotland where no one living with Sickle Cell Disease goes without
+            care, and no one facing hardship is left to face it alone regardless
+            of where they started from.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="mission-statement__media" data-animate="fade-in">
+        <img src="{% static 'main/images/mission2.jpg' %}" alt="Evergreen Hands volunteers at work in the community" class="mission-statement__image">
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CORE PILLARS OF IMPACT -->
+<!-- ============================================================ -->
+<section class="pillars" id="pillars" aria-label="Our core pillars of impact">
+  <div class="container pillars__grid">
+
+    <div class="pillars__gallery" data-animate="fade-in">
+      <div class="pillars__gallery-row">
+        {% if mission.mission_gallery_image1 %}
+          <img src="{{ mission.mission_gallery_image1.url }}" alt="Community event support" class="pillars__image">
+        {% else %}
+          <img src="{% static 'main/images/missionnurse.jpg' %}" alt="Volunteer supporting someone" class="pillars__image">
+        {% endif %}
+
+        {% if mission.mission_gallery_image2 %}
+          <img src="{{ mission.mission_gallery_image2.url }}" alt="Packing food and essentials" class="pillars__image">
+        {% else %}
+          <img src="{% static 'main/images/missionfood.jpg' %}" alt="Volunteers packing food and essentials" class="pillars__image">
+        {% endif %}
+      </div>
+
+      {% if mission.mission_gallery_image3 %}
+        <img src="{{ mission.mission_gallery_image3.url }}" alt="Evergreen Hands team distributing support" class="pillars__image pillars__image--wide">
+      {% else %}
+        <img src="{% static 'main/images/missiongive.jpg' %}" alt="Evergreen Hands team distributing support in the community" class="pillars__image pillars__image--wide">
+      {% endif %}
+    </div>
+
+    <div class="pillars__content" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our Core Pillars of Impact</p>
+      <ul class="pillars__list">
+        <li>
+          <strong>Sickle Cell Disease Support:</strong> Advocacy, peer connection,
+          and help accessing better, more joined-up care working alongside NHS
+          services already in place across Scotland.
+        </li>
+        <li>
+          <strong>Poverty Relief &amp; Refugee Support:</strong> Direct support for
+          people facing financial hardship, with particular focus on asylum
+          seekers and refugees living with Sickle Cell Disease, who often face
+          both health and financial barriers at once.
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOUNDERS -->
+<!-- ============================================================ -->
+<section class="founders" id="founders" aria-labelledby="founders-title">
+  <div class="container">
+    <div class="section-heading" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Founders</p>
+      <h2 id="founders-title" class="section-heading__title">Started By People Who Understand</h2>
+    </div>
+   
+    <div class="founders__grid">
+      {% for founder in founders %}
+        <article class="founder-card" data-animate="fade-up">
+          <div class="founder-card__photo" role="img" aria-label="Photo of {{ founder.full_name }}">
+            {% if founder.image %}
+              <img src="{{ founder.image.url }}" alt="Photo of {{ founder.full_name }}" class="founder-card__img">
+            {% else %}
+              <img src="{% static 'main/images/default-avatar.png' %}" alt="Photo of {{ founder.full_name }}" class="founder-card__img">
+            {% endif %}
+          </div>
+          <p class="founder-card__name">{{ founder.full_name }}</p>
+          <p class="founder-card__title">{{ founder.role }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

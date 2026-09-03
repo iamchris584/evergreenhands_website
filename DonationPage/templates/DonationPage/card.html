@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    
+    <!-- Link External CSS -->
+    <link rel="stylesheet" href="{% static 'DonationPage/css/cardpay.css' %}">
+    
+    <!-- Stripe JS SDK -->
+    <!-- <script src="https://js.stripe.com/v3/"></script> -->
+    <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+</head>
+<body>
+
+<div class="payment-container">
+  <div class="payment-header">
+    <!-- Organization Logo -->
+    <!-- <img src="{% static 'main/images/logo.png' %}" alt="Evergreen Hands Logo" class="payment-header__logo"> -->
+    <h3>Thank you for giving</h3>
+    <p style="color: #64748b; margin: 0; font-size: 14px;">How would you like to complete your donation?</p>
+  </div>
+
+  <form id="payment-form">
+    {% csrf_token %}
+    <div class="payment-options">
+      
+      <!-- Option 1: Bank Transfer Card -->
+      <div class="payment-card" id="card-bank">
+        <label class="payment-card__header">
+          <input type="radio" name="payment_method_type" value="bank" class="payment-card__radio">
+          <span class="payment-card__title">Pay via Bank Transfer</span>
+        </label>
+        <div class="payment-card__body" id="body-bank" hidden>
+          <div class="bank-details">
+            <div class="bank-details__item">
+              <span>Account Name</span>
+              <strong>Evergreen Hands</strong>
+            </div>
+            <div class="bank-details__item">
+              <span>Sort Code</span>
+              <strong>04-14-50</strong>
+            </div>
+            <div class="bank-details__item">
+              <span>Account Number</span>
+              <strong>67960450</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 2: Stripe Card -->
+      <div class="payment-card payment-card--active" id="card-stripe">
+        <label class="payment-card__header">
+          <input type="radio" name="payment_method_type" value="card" class="payment-card__radio" checked>
+          <span class="payment-card__title">Pay with Card</span>
+        </label>
+        <div class="payment-card__body" id="body-stripe">
+          <div id="payment-element">
+            <!-- Stripe.js injects the Payment Element here -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn-submit" id="submit-btn">Complete Payment</button>
+
+    <!-- Powered By Evergreen Hands Footer -->
+    <div class="payment-footer">
+      <span>Powered by</span>
+      <strong>Evergreen Hands</strong>
+    </div>
+    <a href="{% url 'home' %}" class="payment-back-link">&larr; Back to Home</a>
+
+    <div id="card-errors" role="alert"></div>
+  </form>
+</div>
+
+<script>
+  const STRIPE_CLIENT_SECRET = "{{ Secret }}";
+  const return_url = window.location.origin + "{% url 'paymentSucessful' %}"; 
+
+  // Card Selection Toggle Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const radioButtons = document.querySelectorAll('input[name="payment_method_type"]');
+    const bankCard = document.getElementById('card-bank');
+    const stripeCard = document.getElementById('card-stripe');
+    const bankBody = document.getElementById('body-bank');
+    const stripeBody = document.getElementById('body-stripe');
+    const submitBtn = document.getElementById('submit-btn');
+
+    radioButtons.forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        if (e.target.value === 'bank') {
+          bankCard.classList.add('payment-card--active');
+          stripeCard.classList.remove('payment-card--active');
+          
+          bankBody.hidden = false;
+          stripeBody.hidden = true;
+          
+          submitBtn.textContent = 'I Have Made the Transfer';
+        } else {
+          stripeCard.classList.add('payment-card--active');
+          bankCard.classList.remove('payment-card--active');
+          
+          stripeBody.hidden = false;
+          bankBody.hidden = true;
+          
+          submitBtn.textContent = 'Pay Now';
+        }
+      });
+    });
+  });
+</script>
+<script src="{% static 'DonationPage/js/stripefile.js' %}"></script>
+
+</body>
+</html>

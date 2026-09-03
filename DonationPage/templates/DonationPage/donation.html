@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation</title>
+</head>
+<body>
+
+    <h1>Donation </h1>
+    <h3>where your money goes</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, fuga earum 
+        officiis magni natus vel provident iusto error temporibus, explicabo, non reprehenderit 
+        maiores eaque at incidunt corporis odit molestiae aspernatur!</p>
+    <h3>Gift Amount</h3>
+        <div class="btn-group">
+            <button>£ 25</button>
+            <button>£ 50</button>
+            <button>£ 75</button>
+            <button>Other Amount</button>
+        </div>
+    <h3>Your information</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Donate</button>
+
+    </form>
+
+
+    
+</body>
+</html>

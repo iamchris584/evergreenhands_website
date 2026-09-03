@@ -1,0 +1,92 @@
+{% extends "admin/index.html" %}
+
+{% block extra_styles %}
+    {{ block.super }}
+    <style>
+        /* Forces all Unfold card components and app panels to brand green */
+        .dark .bg-white,
+        .dark .bg-base-900,
+        .dark .bg-base-800,
+        .dark [class*="bg-base-"] {
+            background-color: #1a3c18 !important; /* Rich Dark Green */
+            border-color: #2f6a2a !important;
+        }
+
+        /* Overall dashboard background */
+        .dark body,
+        .dark .bg-base-950 {
+            background-color: #0f230e !important; /* Deep Forest Green */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-8 my-4">
+    <!-- Stat Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Successful Donations -->
+        <div style="background-color: #2f6a2a;" class="p-5 rounded-xl border border-emerald-600/40 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-100">Successful</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 text-emerald-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                </span>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white mt-3 tracking-tight">
+                {{ Successful|default:"0" }}
+            </h2>
+        </div>
+
+        <!-- Pending Donations -->
+        <div style="background-color: #2f6a2a;" class="p-5 rounded-xl border border-emerald-600/40 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-100">Pending</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 text-amber-300">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </span>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white mt-3 tracking-tight">
+                {{ Pending|default:"0" }}
+            </h2>
+        </div>
+
+        <!-- Donors -->
+        <div style="background-color: #2f6a2a;" class="p-5 rounded-xl border border-emerald-600/40 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-100">Donors</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 text-emerald-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                </span>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white mt-3 tracking-tight">
+                {{ donors|default:"0" }}
+            </h2>
+        </div>
+
+        <!-- Total Raised -->
+        <div style="background-color: #2f6a2a;" class="p-5 rounded-xl border border-emerald-600/40 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-100">Total Raised</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 text-emerald-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </span>
+            </div>
+            <h2 class="text-3xl font-black text-white mt-3 tracking-tight">
+                £{{ total|default:"0" }}
+            </h2>
+        </div>
+
+    </div>
+
+    <!-- Chart Container -->
+    {% if dashboard.data %}
+        <div class="p-6 bg-white dark:bg-base-900 rounded-xl border border-gray-200/80 dark:border-base-800 shadow-sm">
+            {% include "unfold/components/chart.html" with chart=dashboard.data %}
+        </div>
+    {% endif %}
+
+    <!-- Django Admin App List -->
+    {{ block.super }}
+</div>
+{% endblock %}

@@ -1,0 +1,257 @@
+/* ==========================================================================
+   ABOUT PAGE — UNIQUE STYLES ONLY
+   ========================================================================== */
+
+/* ---------- ABOUT HERO ---------- */
+.about-hero { 
+  padding: 80px 0 60px; 
+}
+
+.about-hero__grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 56px; 
+  align-items: start; 
+}
+
+.about-hero__title { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: clamp(32px, 4.4vw, 48px); 
+  line-height: 1.15; 
+  color: var(--color-accent); 
+}
+
+.about-hero__subheading { 
+  font-family: var(--font-heading); 
+  font-weight: 600; 
+  font-size: 19px; 
+  color: var(--color-text-primary); 
+  margin-bottom: 18px; 
+}
+
+.about-hero__description { 
+  font-size: 16px; 
+  text-align: justify;
+  color: var(--color-text-secondary); 
+}
+
+/* ---------- ABOUT BANNER PHOTO (OVERLAP FIX) ---------- */
+.about-banner { 
+  position: relative;
+  z-index: 2; /* Keeps image above green section background */
+  margin-bottom: -140px; /* Pulls image into the purpose section */
+  padding-bottom: 0;
+}
+
+.about-banner__frame { 
+  border-radius: var(--radius-lg); 
+  overflow: hidden; 
+  box-shadow: var(--shadow-md); 
+}
+
+.about-banner__image { 
+  width: 100%; 
+  aspect-ratio: 1280 / 480; 
+  object-fit: cover; 
+}
+
+/* ---------- OUR PURPOSE (MISSION & VISION) ---------- */
+.about-purpose { 
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, #0a120a 0%, var(--color-green) 100%); 
+  padding-top: 200px; /* Offset space created by the overlapping banner */
+  padding-bottom: 80px; 
+}
+
+.about-purpose__grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 56px; 
+}
+
+.about-purpose__statement { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: clamp(22px, 2.4vw, 28px); 
+  line-height: 1.4; 
+  color: var(--color-white); 
+  margin-bottom: 18px; 
+}
+
+.about-purpose__body { 
+  font-size: 16px; 
+  text-align: justify;
+  line-height: 1.7; 
+  color: rgba(255,255,255,0.85); 
+}
+
+/* ---------- VALUES & COMMITMENTS ---------- */
+.values { 
+  padding: 80px 0; 
+}
+
+.values__title { 
+  text-align: center; 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: clamp(28px, 3.6vw, 40px); 
+  color: var(--color-accent); 
+  margin-bottom: 48px; 
+}
+
+.values__title .text-accent-alt { 
+  color: var(--color-accent); 
+}
+
+.values__grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 28px; 
+}
+
+.value-card { 
+  text-align: center; 
+}
+
+/* Image Badge Styling */
+.value-card__badge { 
+  width: 64px; 
+  height: 64px; 
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 16px; 
+}
+
+.value-card__title { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: 20px; 
+  color: var(--color-text-primary); 
+  margin: 0 0 8px; 
+}
+
+.value-card__description { 
+  font-size: 15px; 
+  color: var(--color-text-secondary); 
+  margin: 0; 
+}
+
+/* ---------- OUR JOURNEY ---------- */
+.journey { 
+  padding: 0 0 80px; 
+}
+
+.journey__card {
+  background: var(--color-green);
+  border-radius: 20px;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.journey__title { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: clamp(24px, 3vw, 32px); 
+  color: var(--color-white); 
+  margin: 0 0 16px; 
+}
+
+.journey__description { 
+  font-size: 15px; 
+  line-height: 1.7; 
+  color: rgba(255,255,255,0.85); 
+  margin-bottom: 28px; 
+}
+
+.journey__stats { 
+  display: flex; 
+  gap: 40px; 
+  margin: 0; 
+}
+
+.journey__stat { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.journey__stat-value { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: 24px; 
+  color: var(--color-white); 
+  margin: 0; 
+}
+
+.journey__stat-label { 
+  font-size: 14px; 
+  color: rgba(255,255,255,0.7); 
+  margin: 0; 
+}
+
+.journey__image { 
+  width: 100%; 
+  border-radius: var(--radius-lg); 
+  aspect-ratio: 612/448; 
+  object-fit: cover; 
+  box-shadow: var(--shadow-md); 
+}
+
+/* ---------- RESPONSIVE ABOUT PAGE ---------- */
+@media (max-width: 1024px) {
+  .about-hero__grid, 
+  .about-purpose__grid, 
+  .journey__card { 
+    grid-template-columns: 1fr; 
+  }
+  .values__grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  .journey__media { 
+    order: -1; 
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero { 
+    padding: 60px 0 30px; 
+  }
+  
+  /* Mobile Overlap & Image Adjustments */
+  .about-banner { 
+    margin-bottom: -100px; 
+    padding-bottom: 0;
+  }
+  
+  .about-banner__image {
+    aspect-ratio: 16 / 10;
+    min-height: 260px;
+  }
+
+  .about-purpose { 
+    padding-top: 140px; 
+    padding-bottom: 48px; 
+  }
+  
+  .values, 
+  .journey { 
+    padding-bottom: 48px; 
+  }
+
+  .journey__card { 
+    padding: 32px 24px; 
+  }
+
+  .values__grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  .journey__stats { 
+    flex-wrap: wrap; 
+    gap: 24px; 
+  }
+}

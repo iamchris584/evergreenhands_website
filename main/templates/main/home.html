@@ -1,0 +1,472 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/favicon-32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/images/favicon-16.png' %}">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/images/favicon-180.png' %}">
+<title>Evergreen Hands — Restoring Hope</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__brand">
+      <img src="{% static 'main/images/logo.png'%}" alt="Evergreen Hands logo" class="navbar__logo">
+      <div class="navbar__brand-text">
+        <span class="navbar__name">Evergreen Hands</span>
+        <span class="navbar__rc">RC: SC055472</span>
+      </div>
+    </a>
+
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navbar__nav" id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#mission">Our Mission</a>
+      <a href="#gallery">Projects Gallery</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+
+    <a href="#donate" class="btn btn--primary navbar__cta">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      Get Involved Today
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <h1 class="hero__headline">
+        <span class="text-orange">Restoring hope,<br>Improving health,</span>
+        <span class="text-green">&amp;</span> Rebuilding lives<span class="text-green">.</span>
+      </h1>
+      <p class="hero__sub">
+        Supporting individuals and families in Scotland facing financial hardship
+        and living with Sickle Cell Disease. You don't have to navigate life's
+        challenges alone.
+      </p>
+      <div class="hero__buttons">
+        <a href="#donate" class="btn btn--green btn--lg">Donate Now</a>
+        <a href="#mission" class="btn btn--outline-orange btn--lg">Read Our Mission →</a>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <img src="{% static 'main/images/worldmap.png' %}" alt="" class="hero__map-bg" aria-hidden="true">
+
+      <div class="hero__card-group">
+        <div class="hero__photo-frame">
+          <img src="{% static 'main/images/heropage.png' %}" alt="Volunteer supporting a member of the community">
+        </div>
+
+        <div class="hero__project-card">
+          <p class="label">Project 1</p>
+          <p class="title">Food supplies</p>
+          <div class="progress"><span style="width:35%;"></span></div>
+          <div class="actions">
+            <a href="#donate" class="btn btn--green">Donate Now</a>
+            <a href="#gallery" class="view-details">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR MISSION ============ -->
+<section class="mission" id="mission">
+  <div class="container mission__grid">
+    <div class="mission__media">
+      <img src="images/mission-main.jpg" alt="Evergreen Hands volunteer at work" class="mission__photo-main">
+      <img src="images/mission-secondary.jpg" alt="Community support moment" class="mission__photo-secondary">
+    </div>
+    <div class="mission__text">
+      <p class="eyebrow eyebrow--green">Our Mission</p>
+      <h2 class="heading heading--orange">Hope Starts With Evergreen Hands<span class="text-green">.</span></h2>
+      <p class="body-text">
+        No one should face sickle cell disease or hardship alone. We connect people
+        to the support, information, and care they need to live fuller, stronger
+        lives. Your support is the difference between struggling in silence and
+        being seen.
+      </p>
+      <a href="#mission" class="btn btn--outline-orange">See Our Mission →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THREE WAYS WE HELP ============ -->
+<!-- ============ THREE WAYS WE HELP ============ -->
+<section class="services">
+  <div class="container">
+    <h2 class="section-title">Three Ways We Help</h2>
+    <div class="services__grid">
+
+      <article class="service-card">
+        <div class="service-card__img-wrapper">
+          <img src="{% static 'main/images/whatwedo2.jpg' %}" alt="Sickle cell support" class="service-card__img">
+        </div>
+        <div class="service-card__body">
+          <h3>Sickle Cell Support</h3>
+          <p>We help people living with Sickle Cell Disease feel less alone and more informed.</p>
+          <a href="#" class="link-arrow">How We Raise Awareness <span>&rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card__img-wrapper">
+          <img src="{% static 'main/images/whatwedo1.jpg' %}" alt="Poverty relief" class="service-card__img">
+        </div>
+        <div class="service-card__body">
+          <h3>Poverty Relief</h3>
+          <p>We help individuals and families get back on stable ground, one step, one need at a time.</p>
+          <a href="#" class="link-arrow">How We Ease Financial Hardship <span>&rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card__img-wrapper">
+          <!-- Swapped to static tag syntax to fix the broken image display -->
+          <img src="{% static 'main/images/blood.jpg' %}" alt="Refugee support" class="service-card__img">
+        </div>
+        <div class="service-card__body">
+          <h3>Refugee Support</h3>
+          <p>We stand with people who face a health condition and a lack of support at the same time.</p>
+          <a href="#" class="link-arrow">How We Support Refugees <span>&rarr;</span></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ ABOUT US (started by people who understand) ============ -->
+<section class="feature-post" id="about">
+  <div class="container feature-post__grid">
+    <div class="feature-post__text">
+      <p class="eyebrow eyebrow--white">About us</p>
+      <h2 class="heading">
+        <span class="text-orange">Started by people who understand</span><span class="text-green">.</span>
+      </h2>
+      <p class="body-text body-text--light">
+        Evergreen Hands began with a simple belief: no one should face sickle cell
+        disease, or hard times, alone.<br><br>
+        We're just getting started. But every person we help proves it matters.
+      </p>
+      <a href="#about" class="btn btn--orange">Learn More →</a>
+    </div>
+    <div class="feature-post__media">
+      <img src="{% static 'main/images/aboutus.png'%}" alt="Evergreen Hands founders and team">
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery__heading">
+      <p class="gallery__eyebrow"><span class="gallery__eyebrow-line"></span>Our Work</p>
+      <h2 class="gallery__title">Project <span class="text-orange">Gallery</span></h2>
+      <p class="section-sub">A look at the work your support makes possible.</p>
+    </div>
+
+        <div class="gallery__grid">
+          <figure class="gallery__item gallery__item--tall">
+          <img src="{% static 'main/images/project1.jpg' %}" alt="Helping asylum seekers integrate into the community">
+          <div class="gallery__item-overlay" aria-hidden="true"></div>
+          <figcaption>
+          <p class="gallery__item-title"><span class="text-green">Evergreen</span> Integration</p>
+          <small>Helping asylum seekers integrate into the community</small>
+          </figcaption>
+          </figure>
+
+          <figure class="gallery__item">
+          <img src="{% static 'main/images/project3.jpg' %}" alt="Evergreen Delivers — food and essentials distribution">
+          <div class="gallery__item-overlay" aria-hidden="true"></div>
+          <figcaption>
+          <p class="gallery__item-title"><span class="text-green">Evergreen</span> Delivers</p>
+          <small>Donated food and essentials, driven directly to communities across Scotland</small>
+          </figcaption>
+          </figure>
+
+          <figure class="gallery__item">
+          <img src="{% static 'main/images/project2.jpg' %}" alt="Evergreen Essentials — food and everyday essentials">
+          <div class="gallery__item-overlay" aria-hidden="true"></div>
+          <figcaption>
+          <p class="gallery__item-title"><span class="text-green">Evergreen</span> Essentials</p>
+          <small>Food and everyday essentials for individuals and families across Scotland</small>
+          </figcaption>
+          </figure>
+          </div>
+
+    <div class="gallery__cta">
+      <a href="#gallery" class="btn btn--orange btn--lg">View All Projects <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DONATE ============ -->
+<section class="donate" id="donate">
+  <div class="container donate__grid">
+    <div class="donate__text">
+      <h2 class="heading">Give an <span class="text-green">Evergreen Hands</span> to those who need it</h2>
+      <p class="body-text">
+        At Evergreen Hands, our mission is to make sure no one in Scotland goes
+        without food, essentials, or someone in their corner. We believe in
+        offering more than a hand-out — we offer a hand to hold, building a
+        community where people affected by hardship and illness are seen,
+        supported, and never left to face it alone.
+      </p>
+    </div>
+
+    <div class="donate__card">
+      <div class="donate__tabs">
+        <button class="donate__tab donate__tab--active" type="button">Once</button>
+        <button class="donate__tab" type="button">Monthly</button>
+      </div>
+
+      <div class="donate__amount-display">£100</div>
+      <div class="donate__progress"><span></span></div>
+
+      <div class="donate__amounts">
+        <button type="button" class="amount-btn">£10</button>
+        <button type="button" class="amount-btn">£50</button>
+        <button type="button" class="amount-btn amount-btn--active">£100</button>
+        <button type="button" class="amount-btn">Other</button>
+      </div>
+
+      <form class="donate__form" onsubmit="return false;">
+        <label class="field">
+          <span>Full Name</span>
+          <input type="text" placeholder="Enter Your Name">
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" placeholder="Enter Your Email">
+        </label>
+        <label class="checkbox-field">
+          <input type="checkbox">
+          <span>You agree to our donation privacy policy.</span>
+        </label>
+        <button type="submit" class="btn btn--orange btn--full">Donate Now</button>
+      </form>
+
+      <div class="donate__accepts">
+        <p>We accept <span class="text-green">donations</span> via</p>
+        <img src="images/payment-methods.png" alt="Accepted payment methods">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__form-wrap">
+      <p class="heading heading--sm">Get in touch<span class="text-green">.</span></p>
+      <p class="section-sub">
+        Questions, support requests, or ways to get involved. We're always happy
+        to hear from you.
+      </p>
+
+      <form class="contact__form" onsubmit="return false;">
+        <div class="field-row">
+          <label class="field">
+            <span>First name</span>
+            <input type="text" placeholder="First name">
+          </label>
+          <label class="field">
+            <span>Last name</span>
+            <input type="text" placeholder="Last name">
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Email</span>
+          <input type="email" placeholder="yourname@email.com">
+        </label>
+
+        <label class="field">
+          <span>Phone number</span>
+          <div class="phone-input">
+            <span class="phone-input__prefix">UK ▾</span>
+            <input type="tel" placeholder="+44 777 537465">
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Message</span>
+          <textarea rows="4" placeholder="Leave us a message..."></textarea>
+        </label>
+
+        <label class="checkbox-field">
+          <input type="checkbox">
+          <span>You agree to our privacy policy.</span>
+        </label>
+
+        <button type="submit" class="btn btn--green btn--full">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact__media">
+      <img src="{% static 'main/images/contact.png' %}" alt="Evergreen Hands volunteer">
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="cta-banner__bg" style="background-image:url('{% static 'main/images/ctabanner.png' %}');"></div>
+  <div class="container cta-banner__inner">
+    <h2>Your generosity brings hope, care, and dignity to families across Scotland.</h2>
+    <a href="#donate" class="btn btn--orange btn--lg">Get Involved Today →</a>
+  </div>
+</section>
+
+<div><p></p></div>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__bg" aria-hidden="true"></div>
+  <div class="container footer__grid">
+
+    <div class="footer__brand">
+      <img src="{% static 'main/images/logo.png' %}" alt="Evergreen Hands logo" class="footer__logo">
+      <p>Evergreen Hands</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Quick Link</h4>
+      <a href="#home">Home</a>
+      <a href="#mission">Our Mission</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About Us</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Get In Touch</h4>
+      <a href="#contact">Contact us</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Address</h4>
+      <p>26 Loccie Road, Winchburgh, EH52 6GE</p>
+      <p>+44 7447 466633</p>
+      <p>info@evergreenhands.org</p>
+    </div>
+
+    <div class="footer__col footer__col--newsletter">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="footer__fine-print">Your email is safe with us, we don't spam.</p>
+
+      <h4>Follow Us</h4>
+      <div class="footer__socials">
+        <a href="#" aria-label="Twitter">𝕏</a>
+        <a href="#" aria-label="Instagram">◍</a>
+        <a href="#" aria-label="Pinterest">P</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer__divider">
+
+  <div class="container footer__legal">
+    <p>© 2026 Evergreen Hands. All rights reserved</p>
+    <p>Evergreen Hands is a charity registered in Scotland. Charity No. SC055472</p>
+    <div class="footer__legal-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Donation Refund Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.classList.toggle('is-active');
+  });
+  document.querySelectorAll('.navbar__nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('is-open');
+      navToggle.classList.remove('is-active');
+    });
+  });
+
+  // Scroll animations — GSAP ScrollTrigger
+  // "scrub" ties the animation progress directly to scroll position, so it
+  // plays continuously as the user scrolls rather than firing once and stopping.
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Whole sections: bigger slide-up + scale-in, driven continuously by scroll
+  gsap.utils.toArray('.mission, .services, .feature-post, .gallery, .donate, .contact, .cta-banner')
+    .forEach((section) => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 120,
+        scale: 0.94,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 95%',
+          end: 'top 55%',
+          scrub: 0.6
+        }
+      });
+    });
+
+  // Card grids: each card travels further and staggers more, scrubbed
+  // continuously so the stagger itself unfolds as you scroll, not all at once
+  gsap.utils.toArray('.services__grid, .gallery__grid').forEach((grid) => {
+    gsap.from(grid.children, {
+      opacity: 0,
+      y: 90,
+      scale: 0.9,
+      stagger: 0.25,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top 95%',
+        end: 'top 45%',
+        scrub: 0.6
+      }
+    });
+  });
+
+  // Hero photo card: continuous subtle parallax as the page loads/scrolls,
+  // for a more alive first impression
+  gsap.to('.hero__card-group', {
+    y: -30,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 0.6
+    }
+  });
+</script>
+</body>
+</html>

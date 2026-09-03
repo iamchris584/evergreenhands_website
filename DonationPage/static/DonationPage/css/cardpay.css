@@ -1,0 +1,254 @@
+:root {
+  --color-primary: #2f6a2a;
+  --color-bg-alt: #f8faf8;
+  --color-border: #e2e8f0;
+  --color-text: #1e293b;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Work sans', sans-serif;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f1f5f9;
+  color: var(--color-text);
+  margin: 0;
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Semi-Transparent Background Image Overlay for Standalone Page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../main/images/aboutus.png"); /* Adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* Transparency level */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Dialog Reset and Centering (when used inside modal) */
+.payment-modal {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: auto;
+  max-width: 500px;
+  width: 90%;
+  overflow: visible;
+}
+
+/* Semi-Transparent Dimmed Overlay for Homepage Modal */
+.payment-modal::backdrop {
+  background: rgba(10, 18, 10, 0.65);
+  backdrop-filter: blur(6px);
+}
+
+/* Container Inner Positioning & Layout */
+.payment-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* Close Button for Modal */
+.payment-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.payment-modal__close:hover {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+/* Header & Logo */
+.payment-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* .payment-header__logo {
+  max-width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+  display: inline-block;
+} */
+
+.payment-header h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--color-primary);
+  font-style: var(--font-heading);
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Stacked Card Styling */
+.payment-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.payment-card--active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.payment-card__header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  background-color: #ffffff;
+}
+
+.payment-card__radio {
+  accent-color: var(--color-primary);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.payment-card__title {
+  font-weight: 600;
+  font-size: 16px;
+  
+  margin: 0;
+}
+
+.payment-card__body {
+  padding: 0 20px 20px;
+  border-top: 1px solid transparent;
+}
+
+.payment-card__body[hidden] {
+  display: none;
+}
+
+/* Bank Details Card Specifics */
+.bank-details {
+  background-color: var(--color-bg-alt);
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.bank-details__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.bank-details__item span {
+  color: #64748b;
+}
+
+.bank-details__item strong {
+  color: var(--color-text);
+}
+
+/* Stripe Element Container */
+#payment-element {
+  margin-top: 8px;
+}
+
+/* Action Button */
+.btn-submit {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.92;
+}
+
+/* Powered by Evergreen Hands Footer */
+.payment-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.payment-footer strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+#card-errors {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Style for the Back link */
+      .payment-back-link {
+        display: block;
+        text-align: center;
+        margin-top: 14px;
+        font-size: 14px;
+        color: var(--color-primary, #2f6a2a);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+      }
+
+      .payment-back-link:hover {
+        text-decoration: underline;
+        color: #1e451b;
+      }

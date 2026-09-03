@@ -1,0 +1,407 @@
+/* ==========================================================================
+   CONTACT PAGE SPECIFIC STYLES
+   ========================================================================== */
+
+/* ==========================================================================
+   CONTACT HERO SECTION
+   ========================================================================== */
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 100px;
+  color: var(--color-white);
+}
+
+.contact-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Base image darkening layer for optimal background contrast */
+.contact-hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+/* Linear Gradient Overlay:
+   - Direction: Top-to-Bottom (180deg) to replicate dark left/top values accurately
+   - Stops: #000000 (100% stop alpha) to #2F6A2A (100% stop alpha)
+   - Layer Opacity: 90% (rgba values at 0.9)
+   - Blend Mode: Multiply
+*/
+/* .contact-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg, 
+    rgba(0, 0, 0, 0.9) 0%, 
+    rgba(47, 106, 42, 0.78) 100%
+  );
+  mix-blend-mode: multiply;
+  z-index: 2;
+} */
+.contact-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #000000 0%, #2f6a2a 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.78;
+}
+
+
+.contact-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Left Column: Intro */
+.contact-hero__intro {
+  max-width: 520px;
+}
+
+.contact-hero__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(36px, 4.5vw, 54px);
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.contact-hero__description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Right Column: Details */
+.contact-hero__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-hero__lets-talk {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-accent); /* #e76f51 */
+  margin: 0 0 12px;
+}
+
+.contact-hero__detail-line {
+  font-size: 16px;
+  color: var(--color-white);
+  margin: 0 0 6px;
+}
+
+.contact-hero__detail-line a {
+  color: var(--color-white);
+  transition: color var(--transition-fast);
+}
+
+.contact-hero__detail-line a:hover,
+.contact-hero__detail-line a:focus-visible {
+  color: var(--color-accent);
+}
+
+.contact-hero__office-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-white);
+  margin: 36px 0 10px;
+}
+
+.contact-hero__address {
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+.eyebrow{
+    color: var(--color-accent);
+}
+
+/* ---------- CONTACT SECTION & FORM ---------- */
+.contact {
+  padding: 88px 0;
+
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.contact__form-wrap {
+  background: var(--color-bg-warm);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 560px;       /* Keeps the overall container compact */
+  width: 100%;
+  margin-inline: auto;     /* Centers the card in desktop grid */
+  box-sizing: border-box;
+}
+
+.contact__title {
+  margin-bottom: 12px;
+}
+
+.contact__subtitle {
+  margin-bottom: 28px;
+  font-size: 16px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 520px; /* Fixes stretched inputs & button on desktop */
+  width: 100%;
+  box-sizing: border-box;
+  margin-inline: auto;
+  margin-bottom: 20px;
+}
+
+.contact-form__row {
+  display: flex;
+  gap: 18px;
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 0%;          /* Allows fields to share 50/50 width in rows without expanding overflow */
+  min-width: 0;           /* Prevents grid/flex item text blowout */
+}
+
+.contact-form__field label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.contact-form__optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.contact-form__field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.contact-form__field input:focus-visible,
+.contact-form__field textarea:focus-visible {
+  /* outline: 3px solid var(--color-accent);
+  outline-offset: 1px; */
+  border-color: var(--color-green);
+}
+
+.contact__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.contact__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contact-form h3{
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-accent);
+}
+
+
+/* i added this cus of overflow */
+/* Ensure box-sizing across form elements to prevent padding overflow */
+/* .contact__form-wrap,
+.contact-form,
+.contact-form__field,
+.contact-form__field input,
+.contact-form__field textarea,
+.contact-form__phone-group {
+  box-sizing: border-box;
+  max-width: 100%;
+} */
+
+/* Prevent long text strings or email links from breaking overflow */
+/* .contact-hero__detail-line a,
+.contact-hero__address p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+} */
+
+/* ---------- CONTACT PAGE RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .contact-hero {
+    padding: 80px 0 60px;
+  }
+
+  .contact-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-hero__office-label {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 56px 0;
+  }
+
+  .contact-form__row {
+    flex-direction: column;
+  }
+
+  .contact__form-wrap {
+    padding: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    padding: 60px 0 40px;
+  }
+
+  .contact-hero__title {
+    font-size: 32px;
+  }
+}
+
+/* alert */
+/* Base Alert Box */
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Django Success Tag styling */
+.alert--success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+/* Optional Error Tag styling */
+.alert--error {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+/* Red field error text */
+.field-error {
+  color: #dc2626;
+  font-size: 0.825rem;
+  margin-top: 4px;
+  display: block;
+  min-height: 1.1em;
+}
+
+.input-invalid {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+
+/* Centered Popup Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.centered-alert {
+  background-color: #ffffff;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 450px;
+  width: 90%;
+  border-top: 5px solid #10b981;
+}
+
+.alert__icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.centered-alert p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #065f46;
+  flex-grow: 1;
+}
+
+.centered-alert__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

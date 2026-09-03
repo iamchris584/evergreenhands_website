@@ -1,0 +1,203 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/aboutus.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================ -->
+<!-- ABOUT HERO -->
+<!-- ============================================================ -->
+<section class="about-hero" id="about-hero" aria-labelledby="about-hero-title">
+  <div class="container about-hero__grid">
+
+    <div class="about-hero__intro" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Know About Us</p>
+      <h1 id="about-hero-title" class="about-hero__title">
+        We are a registered Scottish Charity<span class="text-accent-alt">.</span>
+      </h1>
+    </div>
+
+    <div class="about-hero__details" data-animate="fade-up" data-animate-delay="100">
+      <p class="about-hero__subheading">
+        {% if about.aboutUs_subheading %}
+          {{ about.aboutUs_subheading }}
+        {% else %}
+          We exist so no one has to face Sickle Cell Disease, or hard times, without someone in their corner.
+        {% endif %}
+      </p>
+      <p class="about-hero__description">
+        {% if about.aboutUs_description %}
+          {{ about.aboutUs_description }}
+        {% else %}
+          Evergreen Hands supports people living with Sickle Cell Disease through
+          peer connection and trusted information for better care. We also help 
+          individuals and families facing hardship with food, housing support, 
+          and financial relief with particular care for asylum seekers and refugees, 
+          who often face illness and exclusion at the same time.
+        {% endif %}
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ABOUT BANNER PHOTO -->
+<!-- ============================================================ -->
+<section class="about-banner" aria-label="Evergreen Hands in the community">
+  <div class="container">
+    <div class="about-banner__frame" data-animate="fade-in">
+      {% if about.aboutUs_banner_image %}
+        <img src="{{ about.aboutUs_banner_image.url }}" alt="Evergreen Hands in the community" class="about-banner__image">
+      {% else %}
+        <img src="{% static 'main/images/aboutus.jpg' %}" alt="Evergreen Hands volunteers and community members together" class="about-banner__image">
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- OUR PURPOSE (MISSION & VISION) -->
+<!-- ============================================================ -->
+<section class="about-purpose" aria-label="Our mission and vision">
+  <div class="container about-purpose__grid">
+
+    <div class="about-purpose__block" data-animate="fade-up">
+      <p class="eyebrow eyebrow--on-dark"><span class="eyebrow__line" aria-hidden="true"></span>Our Mission</p>
+      <h2 class="about-purpose__statement">
+        {% if about.about_purpose_statement %}
+          {{ about.about_purpose_statement }}
+        {% else %}
+          We exist to relieve poverty and advance health for those who need it most
+        {% endif %}
+      </h2>
+      <p class="about-purpose__body">
+        {% if about.about_purpose_body %}
+          {{ about.about_purpose_body }}
+        {% else %}
+          We support individuals and families facing hardship with food, housing,
+          and financial relief, while helping people living with Sickle Cell
+          Disease access better care through peer support. We stand especially close to those facing
+           illness and exclusion at
+          the same time like asylum seekers and refugees.
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="about-purpose__block" data-animate="fade-up" data-animate-delay="100">
+      <p class="eyebrow eyebrow--on-dark"><span class="eyebrow__line" aria-hidden="true"></span>Our Vision</p>
+      <h2 class="about-purpose__statement">
+        {% if about.aboutus_vision %}
+          {{ about.aboutus_vision }}
+        {% else %}
+          A Scotland where no one faces illness or hardship alone
+        {% endif %}
+      </h2>
+      <p class="about-purpose__body">
+        {% if about.aboutus_vision_body %}
+          {{ about.aboutus_vision_body }}
+        {% else %}
+          We're working toward a future where every person, regardless of
+          background or circumstance, has access to the support, information, and
+          care they need to live with dignity and where the systems meant to
+          help them actually do.
+        {% endif %}
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- VALUES & COMMITMENTS -->
+<!-- ============================================================ -->
+<section class="values" id="values" aria-labelledby="values-title">
+  <div class="container">
+    <h2 id="values-title" class="values__title">Values <span class="text-accent-alt">&amp;</span> Commitments</h2>
+
+    <div class="values__grid">
+
+      <article class="value-card" data-animate="fade-up">
+        <img class="value-card__badge" src="{% static 'main/images/badge1.png' %}" alt="" aria-hidden="true" />
+        <h3 class="value-card__title">Dignity</h3>
+        <p class="value-card__description">Everyone deserves support</p>
+      </article>
+
+      <article class="value-card" data-animate="fade-up" data-animate-delay="100">
+        <img class="value-card__badge" src="{% static 'main/images/badge2.png' %}" alt="" aria-hidden="true" />
+        <h3 class="value-card__title">Community</h3>
+        <p class="value-card__description">No one should face hardship alone.</p>
+      </article>
+
+      <article class="value-card" data-animate="fade-up" data-animate-delay="200">
+        <img class="value-card__badge" src="{% static 'main/images/badge3.png' %}" alt="" aria-hidden="true" />
+        <h3 class="value-card__title">Transparency</h3>
+        <p class="value-card__description">Open about how funds are used.</p>
+      </article>
+
+      <article class="value-card" data-animate="fade-up" data-animate-delay="300">
+        <img class="value-card__badge" src="{% static 'main/images/badge4.png' %}" alt="" aria-hidden="true" />
+        <h3 class="value-card__title">Compassion</h3>
+        <p class="value-card__description">Care led, not charity as a transaction.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- OUR JOURNEY -->
+<!-- ============================================================ -->
+<section class="journey" id="journey" aria-label="Our journey">
+  <div class="container">
+    <div class="journey__card">
+
+      <div class="journey__text" data-animate="fade-up">
+        <p class="eyebrow eyebrow--on-dark"><span class="eyebrow__line" aria-hidden="true"></span>Our Journey</p>
+        <h2 class="journey__title">We're just getting started</h2>
+        <p class="journey__description">
+          {% if about.aboutus_journey %}
+            {{ about.aboutus_journey }}
+          {% else %}
+            Evergreen Hands was founded in 2026 to make sure no one in Scotland
+            faces Sickle Cell Disease, hardship, or exclusion alone. We're
+            building something small but real starting with the people who
+            need it most, and growing from there.
+          {% endif %}
+        </p>
+
+        <dl class="journey__stats">
+          <div class="journey__stat">
+            <dt class="visually-hidden">Founded</dt>
+            <dd class="journey__stat-value">2026</dd>
+            <dt class="journey__stat-label">Founded</dt>
+          </div>
+          <div class="journey__stat">
+            <dt class="visually-hidden">Focus Areas</dt>
+            <dd class="journey__stat-value">3</dd>
+            <dt class="journey__stat-label">Focus Areas</dt>
+          </div>
+          <div class="journey__stat">
+            <dt class="visually-hidden">Where We Work</dt>
+            <dd class="journey__stat-value">Scotland</dd>
+            <dt class="journey__stat-label">Where We Work</dt>
+          </div>
+        </dl>
+      </div>
+
+      <div class="journey__media" data-animate="fade-in">
+        {% if about.aboutus_image %}
+          <img src="{{ about.aboutus_image.url }}" alt="Evergreen Hands team and volunteers together" class="journey__image">
+        {% else %}
+          <img src="{% static 'main/images/aboutus.png' %}" alt="Evergreen Hands team and volunteers together" class="journey__image">
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,145 @@
+ /* --- GLOBAL TOKENS & RESETS --- */
+      :root {
+        --color-green: #2f6a2a;
+        --color-green-dark: #235220;
+        --color-accent: #e76f51;
+        --color-bg-warm: #faf9f6;
+        --color-white: #ffffff;
+        --color-text-primary: #111827;
+        --color-text-secondary: #374151;
+        --color-border: #e5e7eb;
+        --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --radius-lg: 16px;
+        --radius-sm: 8px;
+        --transition-fast: 0.2s ease;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background-color: var(--color-bg-warm);
+        color: var(--color-text-primary);
+        line-height: 1.6;
+        padding-bottom: 60px;
+      }
+
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* --- TOP NAVIGATION BAR --- */
+      .refund-policy__nav {
+        padding: 32px 0 16px;
+      }
+
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-green);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 10px 18px;
+        background-color: var(--color-white);
+        border: 1.5px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+      }
+
+      .btn-back:hover,
+      .btn-back:focus-visible {
+        background-color: var(--color-green);
+        color: var(--color-white);
+        border-color: var(--color-green);
+        transform: translateX(-2px);
+      }
+
+      .btn-back svg {
+        transition: transform var(--transition-fast);
+      }
+
+      .btn-back:hover svg {
+        transform: translateX(-3px);
+      }
+
+      /* --- POLICY CONTENT CARD --- */
+      .refund-policy {
+        padding: 24px 0 60px;
+      }
+
+      .refund-policy__card {
+        background: var(--color-white);
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--color-border);
+      }
+
+      .refund-policy__header {
+        border-bottom: 2px solid var(--color-bg-warm);
+        padding-bottom: 24px;
+        margin-bottom: 32px;
+      }
+
+      .refund-policy__title {
+        font-family: var(--font-heading);
+        font-size: clamp(26px, 4vw, 36px);
+        color: var(--color-green);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .refund-policy__content {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .refund-policy__heading {
+        font-family: var(--font-heading);
+        font-size: 19px;
+        color: var(--color-text-primary);
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .refund-policy__text {
+        font-size: 15px;
+        color: var(--color-text-secondary);
+        margin-bottom: 12px;
+      }
+
+      .refund-policy__link {
+        color: var(--color-accent);
+        text-decoration: underline;
+        font-weight: 500;
+        transition: color var(--transition-fast);
+      }
+
+      .refund-policy__link:hover,
+      .refund-policy__link:focus-visible {
+        color: var(--color-green);
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 640px) {
+        .refund-policy__card {
+          padding: 28px 20px;
+        }
+
+        .refund-policy__nav {
+          padding: 20px 0 12px;
+        }
+        .refund-policy__text {
+            text-align: justify;
+        }
+      }

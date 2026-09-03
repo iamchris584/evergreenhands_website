@@ -1,0 +1,125 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'main/css/project.css' %}">
+{% endblock %}
+{% block content %}
+
+
+
+<!-- ============================================================ -->
+<!-- PROJECTS HERO -->
+<!-- ============================================================ -->
+<section class="projects-hero" id="projects-hero" aria-labelledby="projects-hero-title">
+  <div class="projects-hero__bg" aria-hidden="true"></div>
+
+  <div class="container projects-hero__grid">
+
+    <div class="projects-hero__intro" data-animate="fade-up">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Projects</p>
+      <h1 id="projects-hero-title" class="projects-hero__title">Every Project. Every Life Changed.</h1>
+      <p class="projects-hero__description">
+        A closer look at the programs helping people across Scotland one
+        project at a time.
+      </p>
+      <a href="{% url 'giving' %}" class="btn btn--primary btn--lg">
+        <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+        Donate Now
+      </a>
+    </div>
+
+    <div class="projects-hero__media" data-animate="fade-in" data-animate-delay="150">
+      <img src="{% static 'main/images/projecthero.jpg' %}" alt="Evergreen Hands volunteer at work" class="projects-hero__image">
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ALL PROJECTS -->
+<!-- ============================================================ -->
+<section class="projects-list" id="all-projects" aria-labelledby="all-projects-title">
+  <div class="container">
+    <p id="all-projects-title" class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>All Projects</p>
+
+  <div class="projects-grid">
+
+
+  {% for project in projects %}
+  
+    <article class="project-card" data-animate="fade-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+                    
+                    <!-- Card Media / Image Area -->
+                    <div class="project-card__media">
+                        {% if project.status or project.date_label %}
+                            <span class="project-card__badge">
+                                • {{ project.status|default:"UPCOMING" }} {% if project.date_label %}· {{ project.date_label }}{% endif %}
+                            </span>
+                        {% endif %}
+
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-card__img" loading="lazy">
+                        {% else %}
+                            <!-- Warm, brand-aligned placeholder visual -->
+                            <div class="project-card__placeholder">
+                                <div class="project-card__placeholder-pattern"></div>
+                                <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Card Body / Content Area -->
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">
+                                {{ project.scheduled_date|default:"Upcoming Initiative" }}
+                            </span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">
+                                {{ project.read_time|default:"5 mins read" }}
+                            </span>
+                        </div>
+
+                        <h3 class="project-card__title">
+                            <a href="{{ project.get_absolute_url|default:'#' }}">
+                                {{ project.title }}
+                            </a>
+                        </h3>
+
+                        <p class="project-card__description">
+                            {{ project.description|truncatewords:40 }}
+                        </p>
+
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+  {% empty %}
+    <p>No active projects at the moment.</p>
+     <p>{{project.title}}</p>
+  {% endfor %}
+
+</div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/script.js"></script>
+
+
+
+{% endblock %}

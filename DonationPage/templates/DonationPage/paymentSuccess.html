@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="{% static 'DonationPage/css/paymentcss.css' %}">
+    
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon-container">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+        
+        <h1>Donation Successful!</h1>
+        <p>Thank you for your donating. Your payment has been processed successfully and your transaction is complete.</p>
+        
+        <a href="{% url 'home' %}" class="btn">Return to Home</a>
+    </div>
+
+</body>
+</html>

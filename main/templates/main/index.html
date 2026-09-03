@@ -1,0 +1,760 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<main id="main-content">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert--{{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+ <!-- ============================================================ -->
+  <!-- HERO SECTION -->
+  <!-- ============================================================ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+
+      <div class="hero__content" data-animate="fade-up">
+        <h1 id="hero-title" class="hero__title">
+          <span class="text-accent">Restoring hope,</span>
+          <span class="text-accent">improving health</span>
+          &amp; rebuilding lives.
+        </h1>
+        <p class="hero__description">
+          {% if home_page.hero_text %}
+            {{ home_page.hero_text }}
+          {% else %}
+            Supporting individuals and families in Scotland facing financial hardship
+            and living with Sickle Cell Disease. You don't have to navigate life's
+            challenges alone.
+          {% endif %}
+        </p>
+        <div class="hero__actions" data-animate="fade-up" data-animate-delay="150">
+          <a href="{% url 'giving' %}" class="btn btn--primary btn--lg">
+            <svg class="btn__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+            Donate Now
+          </a>
+          <a href="{% url 'mission' %}" class="btn btn--outline btn--lg">Read Our Mission</a>
+        </div>
+      </div>
+
+      <div class="hero__media" data-animate="fade-in" data-animate-delay="200">
+        <figure class="hero__photo-frame">
+          {% if home_page.hero_image %}
+            <img src="{{ home_page.hero_image.url }}" alt="Evergreen Hands volunteer distributing food supplies to a family">
+          {% else %}
+            <img src="{% static 'main/images/heropage.jpg' %}" alt="Evergreen Hands volunteer distributing food supplies to a family">
+          {% endif %}
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MISSION SECTION -->
+  <!-- ============================================================ -->
+  <section class="mission" id="mission" aria-labelledby="mission-title">
+    <div class="container mission__grid">
+
+      <div class="mission__media" data-animate="fade-in">
+        {% if home_page.mission_image %}
+          <img src="{{ home_page.mission_image.url }}" alt="Children in the community Evergreen Hands supports" class="mission__image mission__image--primary">
+        {% else %}
+          <img src="{% static 'main/images/mission5.jpg' %}" alt="Children in the community Evergreen Hands supports" class="mission__image mission__image--primary">
+        {% endif %}
+        <img src="{% static 'main/images/missionimg.jpg' %}" alt="Volunteers joining hands together in support" class="mission__image mission__image--accent">
+      </div>
+
+      <div class="mission__content" data-animate="fade-up">
+        <p class="eyebrow">Our Mission</p>
+        <h2 id="mission-title" class="mission__title">Hope Starts With Evergreen Hands<span class="text-accent-alt">.</span></h2>
+        <p class="mission__description">
+          {% if home_page.mission_text %}
+            {{ home_page.mission_text }}
+          {% else %}
+            No one should face Sickle Cell Disease or hardship alone. We connect people
+            to the support, information, and care they need to live fuller, stronger
+            lives. Your support is the difference between struggling in silence and
+            being seen.
+          {% endif %}
+        </p>
+        <a href="{% url 'mission' %}" class="btn btn--outline">See Our Mission</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- WAYS WE HELP -->
+  <!-- ============================================================ -->
+  <section class="ways-we-help" id="ways-we-help" aria-labelledby="ways-we-help-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our Activities</p>
+      <h2 id="ways-we-help-title" class="section-heading__title">
+        Three Ways we <span class="text-accent">Help</span>
+      </h2>
+      <p class="section-heading__subtitle">How we serve our community every single day.</p>
+    </div>
+
+    <div class="ways-we-help__grid">
+
+      <!-- Sickle Cell Support -->
+      <article class="project-card" id="service-sickle-cell" data-animate="fade-up">
+        <div class="project-card__media">
+          {% if home_page.sickle_cell_image %}
+            <img src="{{ home_page.sickle_cell_image.url }}" alt="Community support event for people living with Sickle Cell Disease" class="project-card__img">
+          {% else %}
+            <img src="{% static 'main/images/sicklecell3.jpg' %}" alt="Community support event for people living with Sickle Cell Disease" class="project-card__img">
+          {% endif %}
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Sickle Cell Support</h3>
+          <p class="project-card__description">
+            We help people living with Sickle Cell Disease feel less alone and
+            more informed, through peer support.
+          </p>
+          <div class="project-card__footer">
+            <a href="{% url 'mission' %}" class="project-card__btn">
+              <span>Learn More</span>
+              <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Poverty Relief -->
+      <article class="project-card" id="service-poverty-relief" data-animate="fade-up" data-animate-delay="100">
+        <div class="project-card__media">
+          {% if home_page.poverty_relief_image %}
+            <img src="{{ home_page.poverty_relief_image.url }}" alt="Volunteers packing food and essentials for families in need" class="project-card__img">
+          {% else %}
+            <img src="{% static 'main/images/wayswehelp4.jpg' %}" alt="Volunteers packing food and essentials for families in need" class="project-card__img">
+          {% endif %}
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Poverty Relief</h3>
+          <p class="project-card__description">
+            We help individuals and families get back on stable ground 
+            one step, one need at a time.
+          </p>
+          <div class="project-card__footer">
+            <a href="{% url 'mission' %}" class="project-card__btn">
+              <span>Learn More</span>
+              <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Refugee Support -->
+      <article class="project-card" id="service-refugee-support" data-animate="fade-up" data-animate-delay="200">
+        <div class="project-card__media">
+          {% if home_page.refugee_support_image %}
+            <img src="{{ home_page.refugee_support_image.url }}" alt="Volunteer welcoming a refugee family into the community" class="project-card__img">
+          {% else %}
+            <img src="{% static 'main/images/waywehelp3.jpg' %}" alt="Volunteer welcoming a refugee family into the community" class="project-card__img">
+          {% endif %}
+        </div>
+        <div class="project-card__body">
+          <h3 class="project-card__title">Refugee Support</h3>
+          <p class="project-card__description">
+            Welcoming refugees to Scotland with practical support, language skills, and community integration to help them build a safe future.
+          </p>
+          <div class="project-card__footer">
+            <a href="{% url 'mission' %}" class="project-card__btn">
+              <span>Learn More</span>
+              <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ============================================================ -->
+  <!-- ABOUT SECTION -->
+  <!-- ============================================================ -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="container about__grid">
+
+      <div class="about__content" data-animate="fade-up">
+        <p class="eyebrow eyebrow--on-dark">About Us</p>
+        <h2 id="about-title" class="about__title">Started By People Who Understand</h2>
+        <p class="about__description">
+          {% if home_page.aboutus_text %}
+            {{ home_page.aboutus_text }}
+          {% else %}
+            Evergreen Hands began with a simple belief: no one should face Sickle Cell
+            Disease, or hard times, alone. We're just getting started. But every person we help
+            proves it matters.
+          {% endif %}
+        </p>
+        <a href="{% url 'aboutus' %}" class="btn btn--secondary">Learn More &rarr;</a>
+      </div>
+
+      <div class="about__media" data-animate="fade-in">
+        {% if home_page.aboutus_image %}
+          <img src="{{ home_page.aboutus_image.url }}" alt="Evergreen Hands founders and volunteers" class="about__image">
+        {% else %}
+          <img src="{% static 'main/images/aboutus.png' %}" alt="Evergreen Hands founders and volunteers" class="about__image">
+        {% endif %}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROJECTS SECTION -->
+  <!-- ============================================================ -->
+  <section class="projects" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Our Work</p>
+        <h2 id="projects-title" class="section-heading__title">
+          Project <span class="text-accent">Gallery</span>
+        </h2>
+        <p class="section-heading__subtitle">A look at the work your support makes possible.</p>
+      </div>
+
+      <div class="projects-grid">
+            {% for project in projects %}
+                <article class="project-card" data-animate="fade-up" style="animation-delay: {{ forloop.counter0|add:1 }}00ms;">
+                    
+                    <!-- Card Media / Image Area -->
+                    <div class="project-card__media">
+                        {% if project.status or project.date_label %}
+                            <span class="project-card__badge">
+                                • {{ project.status|default:"UPCOMING" }} {% if project.date_label %}· {{ project.date_label }}{% endif %}
+                            </span>
+                        {% endif %}
+
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-card__img" loading="lazy">
+                        {% else %}
+                            <!-- Warm, brand-aligned placeholder visual -->
+                            <div class="project-card__placeholder">
+                                <div class="project-card__placeholder-pattern"></div>
+                                <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Card Body / Content Area -->
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">
+                                {{ project.scheduled_date|default:"Upcoming Initiative" }}
+                            </span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">
+                                {{ project.read_time|default:"5 mins read" }}
+                            </span>
+                        </div>
+
+                        <h3 class="project-card__title">
+                            <a href="{{ project.get_absolute_url|default:'#' }}">
+                                {{ project.title }}
+                            </a>
+                        </h3>
+
+                        <p class="project-card__description">
+                            {{ project.description|truncatewords:40 }}
+                        </p>
+
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+            {% empty %}
+                <!-- Hardcoded Fallback / Four Client Projects -->
+                <article class="project-card" data-animate="fade-up">
+                    <div class="project-card__media">
+                        <span class="project-card__badge">• UPCOMING · CHRISTMAS 2026</span>
+                        <div class="project-card__placeholder">
+                            <div class="project-card__placeholder-pattern"></div>
+                            <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">December 2026</span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">Holiday Relief</span>
+                        </div>
+                        <h3 class="project-card__title">Christmas Support</h3>
+                        <p class="project-card__description">
+                            Providing Christmas dinner support, gifts, and clothing for families affected by sickle cell disease and asylum seekers.
+                        </p>
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-animate="fade-up" style="animation-delay: 100ms;">
+                    <div class="project-card__media">
+                        <span class="project-card__badge">• UPCOMING · EASTER 2027</span>
+                        <div class="project-card__placeholder">
+                            <div class="project-card__placeholder-pattern"></div>
+                            <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">April 2027</span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">Family Outreach</span>
+                        </div>
+                        <h3 class="project-card__title">Easter Support</h3>
+                        <p class="project-card__description">
+                            Distributing Easter eggs, holiday gifts, and warm clothing packages to low-income families and individuals facing hardship.
+                        </p>
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-animate="fade-up" style="animation-delay: 200ms;">
+                    <div class="project-card__media">
+                        <span class="project-card__badge">• SUMMER 2027 · ADVOCACY</span>
+                        <div class="project-card__placeholder">
+                            <div class="project-card__placeholder-pattern"></div>
+                            <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">June 2027</span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">Patient Voice</span>
+                        </div>
+                        <h3 class="project-card__title">Feedback & Research Collection</h3>
+                        <p class="project-card__description">
+                            Gathering reviews and lived experiences from individuals with sickle cell disease regarding healthcare access, medication, and isolation.
+                        </p>
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-animate="fade-up" style="animation-delay: 300ms;">
+                    <div class="project-card__media">
+                        <span class="project-card__badge">• UPCOMING · SUMMER 2027</span>
+                        <div class="project-card__placeholder">
+                            <div class="project-card__placeholder-pattern"></div>
+                            <svg class="project-card__placeholder-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span class="project-card__date">July 2027</span>
+                            <span class="project-card__dot">•</span>
+                            <span class="project-card__read-time">Direct Relief</span>
+                        </div>
+                        <h3 class="project-card__title">Food & Utility Support</h3>
+                        <p class="project-card__description">
+                            Delivering essential food supplies and direct utility bill relief for families affected by health issues and limited access to public funds.
+                        </p>
+                        <div class="project-card__footer">
+                            <a href="{% url 'projects' %}" class="project-card__btn">
+                                Learn more
+                                <svg class="project-card__btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+  <!-- ============================================================ -->
+  <!-- DONATION SECTION -->
+  <!-- ============================================================ -->
+  <section class="donation" id="donate" aria-labelledby="donation-title">
+    <div class="container donation__grid">
+
+      <div class="donation__intro" data-animate="fade-up">
+        <p class="eyebrow">Support Our Work</p>
+        <h2 id="donation-title" class="donation__title">Give An <span class="text-accent-alt">Evergreen Hands</span> To Those Who Need It</h2>
+        <p class="donation__description">
+          Our mission is to make sure no one in Scotland goes without food,
+          essentials, or someone in their corner. We believe in offering more than
+          a hand-out we offer a hand to hold, building a community where people
+          affected by hardship and illness are seen, supported, and never left to
+          face it alone.
+        </p>
+      </div>
+
+      <div class="donation__card" data-animate="fade-up" data-animate-delay="100">
+        <form class="donation-form" id="donation-form" action="{% url 'donation' %}" method="POST" novalidate>
+          {% csrf_token %}
+
+          <!-- Global / Non-Field Errors -->
+          {% if form.non_field_errors %}
+            <div class="form-error-summary" style="color: #dc3545; background-color: #f8d7da; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+              {% for error in form.non_field_errors %}
+                <p style="margin: 0;">{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+    
+          <fieldset class="donation-form__amounts">
+            <legend class="donation-form__label">Select an amount</legend>
+
+            <div class="donation-amount-group" id="donation-amount-group" role="group" aria-label="Donation amount">
+              <button type="button" class="donation-amount-btn" data-amount="10">£10</button>
+              <button type="button" class="donation-amount-btn" data-amount="25">£25</button>
+              <button type="button" class="donation-amount-btn donation-amount-btn--selected" data-amount="50" aria-pressed="true">£50</button>
+              <button type="button" class="donation-amount-btn" data-amount="100">£100</button>
+              <button type="button" class="donation-amount-btn donation-amount-btn--other" data-amount="other">Other</button>
+            </div>
+
+            <div class="donation-form__custom-amount" id="donation-custom-amount-wrap" hidden>
+              <label for="donation-amount-custom">Enter a custom amount (£)</label>
+              <!-- REMOVED name="amount" to prevent overriding the hidden field -->
+              <input
+                type="number"
+                id="donation-amount-custom"
+                min="1"
+                step="1"
+                inputmode="numeric"
+                placeholder="e.g. 75">
+            </div>
+
+            <!-- FIXED: name changed to "amount", value key changed to form.amount.value -->
+            <input type="hidden" id="donation-amount" name="amount" value="{{ form.amount.value|default:'50' }}">
+
+            <!-- FIXED: both check and loop now target form.amount.errors -->
+            {% if form.amount.errors %}
+              {% for error in form.amount.errors %}
+                <p class="field-error" style="color: #dc3545; font-size: 0.875rem; margin-top: 6px;">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          </fieldset>
+
+          <!-- Full Name Field -->
+          <div class="donation-form__field">
+            <label for="donor-name">Full Name</label>
+            <input 
+              type="text" 
+              id="donor-name" 
+              name="full_name" 
+              value="{{ form.full_name.value|default:'' }}" 
+              placeholder="Enter your name" 
+              autocomplete="name" 
+              required>
+            {% if form.full_name.errors %}
+              {% for error in form.full_name.errors %}
+                <p class="field-error" style="color: #dc3545; font-size: 0.875rem; margin-top: 4px;">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <!-- Email Address Field -->
+          <div class="donation-form__field">
+            <label for="donor-email">Email Address</label>
+            <input 
+              type="email" 
+              id="donor-email" 
+              name="email" 
+              value="{{ form.email.value|default:'' }}" 
+              placeholder="Enter your email" 
+              autocomplete="email" 
+              required>
+            {% if form.email.errors %}
+              {% for error in form.email.errors %}
+                <p class="field-error" style="color: #dc3545; font-size: 0.875rem; margin-top: 4px;">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <!-- Privacy Consent Field -->
+          <div class="donation-form__checkbox">
+            <input 
+              type="checkbox" 
+              id="donation-privacy-consent" 
+              name="privacy_consent" 
+              {% if form.privacy_consent.value %}checked{% endif %}>
+            <label for="donation-privacy-consent">You agree to our donation privacy policy.</label>
+            
+            {% if form.privacy_consent.errors %}
+              {% for error in form.privacy_consent.errors %}
+                <p class="field-error" style="color: #dc3545; font-size: 0.875rem; margin-top: 4px; display: block; width: 100%;">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full btn--lg" id="donation-submit">
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+            Donate Now
+          </button>
+
+          <div class="donation-form__accepted-methods">
+            <p>We accept donations via</p>
+            <img src="{% static 'main/images/donate.jpg' %}" alt="Visa, Mastercard, and PayPal accepted">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT SECTION -->
+  <!-- ============================================================ -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div id="alert-container"></div>
+
+    <div class="container contact__grid">
+      <div class="contact__form-wrap" data-animate="fade-up">
+        <h2 id="contact-title" class="contact__title">Get In Touch<span class="text-accent-alt">.</span></h2>
+        <p class="contact__subtitle">
+          Have a question, need support, or interested in partnering, volunteering, or joining our Board of Trustees? We’d love to hear from you.
+        </p>
+
+        <form class="contact-form" id="contact-form" action="{% url 'contact' %}" method="post" novalidate>
+          {% csrf_token %}
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="contact-first-name">First Name</label>
+              <input type="text" id="contact-first-name" name="first_name" placeholder="First name" autocomplete="given-name" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-last-name">Last Name</label>
+              <input type="text" id="contact-last-name" name="last_name" placeholder="Last name" autocomplete="family-name" required>
+              <span class="field-error"></span>
+            </div>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" placeholder="yourname@email.com" autocomplete="email" required>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-phone">Phone Number <span class="contact-form__optional">(optional)</span></label>
+            <input type="tel" id="contact-phone" name="phone_number" placeholder="+44 7XXX XXXXXX" autocomplete="tel">
+            <span class="field-error"></span>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="4" placeholder="Leave us a message..." required></textarea>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="donation-form__checkbox">
+            <input type="checkbox" id="contact-privacy-consent" name="contact_privacy_consent" required>
+            <label for="contact-privacy-consent">I agree to the privacy policy and consent to Evergreen Hands storing my email and phone number to contact me regarding my inquiry.</label>
+            <span class="field-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full btn--lg" id="contact-submit">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact__media" data-animate="fade-in">
+        {% if home_page.get_in_touch_image %}
+          <img src="{{ home_page.get_in_touch_image.url }}" alt="Evergreen Hands volunteer ready to help" class="contact__image">
+        {% else %}
+          <img src="{% static 'main/images/contact.png' %}" alt="Evergreen Hands volunteer ready to help" class="contact__image">
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- 1. DONATION FORM HANDLER ---
+  const donationForm = document.getElementById('donation-form');
+  if (donationForm) {
+    const amountBtns = document.querySelectorAll('.donation-amount-btn');
+    const customAmountWrap = document.getElementById('donation-custom-amount-wrap');
+    const customAmountInput = document.getElementById('donation-amount-custom');
+    const hiddenAmountInput = document.getElementById('donation-amount');
+    const otherBtn = document.querySelector('.donation-amount-btn--other');
+
+    const setActiveBtn = (targetBtn) => {
+      amountBtns.forEach((btn) => {
+        btn.classList.remove('donation-amount-btn--selected');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      if (targetBtn) {
+        targetBtn.classList.add('donation-amount-btn--selected');
+        targetBtn.setAttribute('aria-pressed', 'true');
+      }
+    };
+
+    amountBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setActiveBtn(btn);
+        const selectedValue = btn.dataset.amount;
+
+        if (selectedValue === 'other') {
+          customAmountWrap.hidden = false;
+          customAmountInput.required = true;
+          if (!customAmountInput.value && hiddenAmountInput.value) {
+            customAmountInput.value = hiddenAmountInput.value;
+          }
+          customAmountInput.focus();
+          hiddenAmountInput.value = customAmountInput.value || '';
+        } else {
+          hiddenAmountInput.value = selectedValue;
+          customAmountInput.value = selectedValue;
+          customAmountWrap.hidden = true;
+          customAmountInput.required = false;
+        }
+      });
+    });
+
+    if (customAmountInput) {
+      customAmountInput.addEventListener('input', (e) => {
+        hiddenAmountInput.value = e.target.value;
+        setActiveBtn(otherBtn);
+      });
+    }
+
+    donationForm.addEventListener('submit', (e) => {
+      e.preventDefault(); 
+      const amountVal = parseFloat(hiddenAmountInput.value);
+      if (!hiddenAmountInput.value || isNaN(amountVal) || amountVal <= 0) {
+        alert('Please enter a valid donation amount.');
+        if (!customAmountWrap.hidden) customAmountInput.focus();
+        return;
+      }
+      if (!donationForm.checkValidity()) {
+        donationForm.reportValidity();
+        return;
+      }
+      donationForm.submit(); 
+    });
+  }
+
+  // --- 2. DJANGO STANDARD ALERT FADE-OUT ---
+  const alerts = document.querySelectorAll('.alert');
+  alerts.forEach((alert) => {
+    setTimeout(() => {
+      alert.style.opacity = '0';
+      setTimeout(() => alert.remove(), 300);
+    }, 4000);
+  });
+
+  // --- 3. CONTACT FORM AJAX HANDLER ---
+  const contactForm = document.getElementById('contact-form');
+  const alertContainer = document.getElementById('alert-container');
+  if (!contactForm) return;
+
+  const clearErrors = () => {
+    contactForm.querySelectorAll('.field-error').forEach(span => span.textContent = '');
+    contactForm.querySelectorAll('.input-invalid').forEach(input => input.classList.remove('input-invalid'));
+  };
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // STOPS NATIVE BROWSER REDIRECT
+    clearErrors();
+
+    const formData = new FormData(contactForm);
+
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+      }
+    })
+    .then(async (res) => {
+      const data = await res.json();
+
+      if (res.ok && data.status === 'success') {
+        contactForm.reset(); 
+        
+        alertContainer.innerHTML = `
+          <div class="modal-overlay" id="message-modal">
+            <div class="centered-alert alert--success" role="alert">
+              <svg class="alert__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <p>${data.message}</p>
+              <button type="button" class="centered-alert__close" id="close-modal-btn">&times;</button>
+            </div>
+          </div>
+        `;
+
+        const modal = document.getElementById('message-modal');
+        document.getElementById('close-modal-btn').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (ev) => { if (ev.target === modal) modal.remove(); });
+        
+        setTimeout(() => { if (modal) modal.remove(); }, 4000);
+
+      } else if (data.errors) {
+        Object.keys(data.errors).forEach(fieldName => {
+          const input = contactForm.querySelector(`[name="${fieldName}"]`);
+          if (input) {
+            input.classList.add('input-invalid');
+            const fieldWrap = input.closest('.contact-form__field, .donation-form__checkbox');
+            const errorSpan = fieldWrap ? fieldWrap.querySelector('.field-error') : null;
+            if (errorSpan) {
+              errorSpan.textContent = data.errors[fieldName][0];
+            }
+          }
+        });
+      }
+    })
+    .catch(err => console.error('Fetch error:', err));
+  });
+
+});
+</script>
+
+{% endblock content %}

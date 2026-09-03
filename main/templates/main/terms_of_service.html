@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Evergreen Hands</title>
+    <link rel="stylesheet" href="{% static 'main/css/refund_policy.css' %}">
+</head>
+<body>
+
+<section class="refund-policy" id="terms-of-service" aria-labelledby="terms-title">
+  <div class="container">
+    
+
+
+    <!-- Content Card -->
+    <div class="refund-policy__card">
+      <header class="refund-policy__header">
+        <h1 class="refund-policy__title" id="terms-title">Evergreen Hands Terms of Service</h1>
+      </header>
+
+      <div class="refund-policy__content">
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">1. Acceptance of Terms</h2>
+          <p class="refund-policy__text">
+            By accessing and using the website <a href="https://evergreenhands.org" class="refund-policy__link">evergreenhands.org</a>, you agree to comply with and be bound by these Terms of Service. If you do not agree, please do not use our site.
+          </p>
+        </article>
+
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">2. Website Use &amp; Purpose</h2>
+          <p class="refund-policy__text">
+            This website is operated by Evergreen Hands to provide organizational updates, accept contact inquiries, and process secure donations. You agree to use this site only for lawful purposes.
+          </p>
+        </article>
+
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">3. Donation Security</h2>
+          <p class="refund-policy__text">
+            All financial transactions are processed securely through our trusted third-party payment processor, Stripe, or via direct bank transfer. Evergreen Hands does not store your credit card details or sensitive financial information on our local servers.
+          </p>
+        </article>
+
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">4. Intellectual Property</h2>
+          <p class="refund-policy__text">
+            The content, logos, text, and images displayed on this website are the property of Evergreen Hands and are protected by applicable copyright and trademark laws.
+          </p>
+        </article>
+
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">5. Limitation of Liability</h2>
+          <p class="refund-policy__text">
+            Evergreen Hands is provided on an "as-is" basis. We are not liable for any direct, indirect, or incidental damages arising out of your access to, or inability to access, this website.
+          </p>
+        </article>
+
+        <article class="refund-policy__section">
+          <h2 class="refund-policy__heading">6. Governing Law</h2>
+          <p class="refund-policy__text">
+            These terms are governed by and construed in accordance with the laws governing our registered operations, without regard to its conflict of law principles.
+          </p>
+        </article>
+      </div>
+    </div>
+        <!-- Navigation / Back to Home Button -->
+    <nav class="refund-policy__nav">
+      <a href="{% url 'home' %}" class="btn-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+      </a>
+    </nav>
+  </div>
+      
+  
+</section>
+
+</body>
+</html>

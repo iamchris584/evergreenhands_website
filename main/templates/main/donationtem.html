@@ -1,0 +1,142 @@
+{% load static %}
+<section class="donation" id="donate" aria-labelledby="donation-title">
+  <div class="container donation__grid">
+
+    <div class="donation__intro" data-animate="fade-up">
+      <p class="eyebrow">What your donation support</p>
+      <h2 id="donation-title" class="donation__title">Give An <span class="text-accent-alt">Evergreen Hands</span> To Those Who Need It</h2>
+      <p class="donation__description">
+       Your donation goes directly towards two things  helping families facing hardship with food, housing, and financial support, and helping
+        people living with sickle cell disease access better care through peer support. 
+        As a newly registered charity, every donation helps us build this from the ground up.
+      </p>
+    </div>
+
+    <div class="donation__card" data-animate="fade-up" data-animate-delay="100">
+      <form class="donation-form" id="donation-form" action="{% url 'donation' %}" method="POST" novalidate>
+        {% csrf_token %}
+        <fieldset class="donation-form__amounts">
+          <legend class="donation-form__label">Select an amount</legend>
+
+          <div class="donation-amount-group" id="donation-amount-group" role="group" aria-label="Donation amount">
+            <button type="button" class="donation-amount-btn" data-amount="10">£10</button>
+            <button type="button" class="donation-amount-btn" data-amount="25">£25</button>
+            <button type="button" class="donation-amount-btn donation-amount-btn--selected" data-amount="50" aria-pressed="true">£50</button>
+            <button type="button" class="donation-amount-btn" data-amount="100">£100</button>
+            <button type="button" class="donation-amount-btn donation-amount-btn--other" data-amount="other">Other</button>
+          </div>
+
+          <div class="donation-form__custom-amount" id="donation-custom-amount-wrap" hidden>
+            <label for="donation-amount-custom">Enter a custom amount (£)</label>
+            <input
+              type="number"
+              id="donation-amount-custom"
+              name="amount"
+              min="1"
+              step="1"
+              inputmode="numeric"
+              placeholder="e.g. 75">
+          </div>
+
+          <input type="hidden" id="donation-amount" name="donation_amount" value="50">
+        </fieldset>
+
+        <div class="donation-form__field">
+          <label for="donor-name">Full Name</label>
+          <input type="text" id="donor-name" name="full_name" placeholder="Enter your name" autocomplete="name" required>
+        </div>
+
+        <div class="donation-form__field">
+          <label for="donor-email">Email Address</label>
+          <input type="email" id="donor-email" name="email" placeholder="Enter your email" autocomplete="email" required>
+        </div>
+
+        <div class="donation-form__checkbox">
+          <input type="checkbox" id="donation-privacy-consent" name="privacy_consent" required>
+          <label for="donation-privacy-consent">You agree to our donation privacy policy.</label>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full btn--lg" id="donation-submit">
+          <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.3.4.5 1 .5 1.4 0C12.7 5.2 14.2 4 16.4 4c4 0 5.6 4 4.6 7.7C18.5 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          Donate Now
+        </button>
+
+        <div class="donation-form__accepted-methods">
+          <p>We accept donations via</p>
+          <img src="{% static 'main/images/donate.jpg' %}" alt="Visa, Mastercard, and PayPal accepted">
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    const donationForm = document.getElementById('donation-form');
+    if (!donationForm) return;
+
+    const amountBtns = donationForm.querySelectorAll('.donation-amount-btn');
+    const customAmountWrap = document.getElementById('donation-custom-amount-wrap');
+    const customAmountInput = document.getElementById('donation-amount-custom');
+    const hiddenAmountInput = document.getElementById('donation-amount');
+    const otherBtn = donationForm.querySelector('.donation-amount-btn--other');
+
+    const setActiveBtn = (targetBtn) => {
+      amountBtns.forEach((btn) => {
+        btn.classList.remove('donation-amount-btn--selected');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      if (targetBtn) {
+        targetBtn.classList.add('donation-amount-btn--selected');
+        targetBtn.setAttribute('aria-pressed', 'true');
+      }
+    };
+
+    amountBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setActiveBtn(btn);
+        const selectedValue = btn.dataset.amount;
+
+        if (selectedValue === 'other') {
+          customAmountWrap.hidden = false;
+          customAmountInput.required = true;
+          if (!customAmountInput.value && hiddenAmountInput.value) {
+            customAmountInput.value = hiddenAmountInput.value;
+          }
+          customAmountInput.focus();
+          hiddenAmountInput.value = customAmountInput.value || '';
+        } else {
+          hiddenAmountInput.value = selectedValue;
+          customAmountInput.value = selectedValue;
+          customAmountWrap.hidden = true;
+          customAmountInput.required = false;
+        }
+      });
+    });
+
+    if (customAmountInput) {
+      customAmountInput.addEventListener('input', (e) => {
+        hiddenAmountInput.value = e.target.value;
+        setActiveBtn(otherBtn);
+      });
+    }
+
+    donationForm.addEventListener('submit', (e) => {
+      e.preventDefault(); 
+      const amountVal = parseFloat(hiddenAmountInput.value);
+      if (!hiddenAmountInput.value || isNaN(amountVal) || amountVal <= 0) {
+        alert('Please enter a valid donation amount.');
+        if (!customAmountWrap.hidden) customAmountInput.focus();
+        return;
+      }
+      if (!donationForm.checkValidity()) {
+        donationForm.reportValidity();
+        return;
+      }
+      donationForm.submit(); 
+    });
+  })();
+</script>

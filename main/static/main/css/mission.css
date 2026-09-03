@@ -1,0 +1,320 @@
+/* ==========================================================================
+   MISSION PAGE — UNIQUE STYLES ONLY
+   ========================================================================== */
+
+/* ---------- MISSION PAGE HERO ---------- */
+.mission-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 100px;
+  color: var(--color-white);
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+/* Background image + Exact Figma Gradient Overlay (Linear 90deg #000 to #2F6A2A @ 78% Multiply) */
+.mission-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.mission-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #000000 0%, #2f6a2a 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.78;
+}
+
+/* 2-Column Grid Layout (Desktop) */
+.mission-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Column */
+.mission-hero__col-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mission-hero .eyebrow {
+  color: #2f6a2a;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.mission-hero__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(36px, 4.2vw, 54px);
+  line-height: 1.1;
+  color: var(--color-accent);
+  margin-bottom: 32px;
+}
+
+.mission-hero__title .text-accent-alt {
+  color: #2f6a2a;
+}
+
+.mission-hero__btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  padding: 14px 28px;
+}
+
+/* Right Column */
+.mission-hero__description {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 17px;
+  text-align: justify;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------- MISSION & VISION STATEMENT ---------- */
+.mission-statement { 
+  padding: 80px 0; 
+}
+
+.mission-statement__grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 56px; 
+  align-items: center; 
+}
+
+.mission-statement__block { 
+  margin-bottom: 32px; 
+}
+
+.mission-statement__block:last-child { 
+  margin-bottom: 0; 
+}
+
+.mission-statement__body { 
+  font-size: 17px; 
+  color: var(--color-text-secondary); 
+  max-width: 52ch; 
+}
+
+.mission-statement__image { 
+  width: 100%; 
+  border-radius: var(--radius-lg); 
+  aspect-ratio: 677/451; 
+  object-fit: cover; 
+  box-shadow: var(--shadow-md); 
+}
+
+/* ---------- CORE PILLARS OF IMPACT ---------- */
+.pillars { 
+  padding: 80px 0; 
+  background: var(--color-bg-warm); 
+}
+
+.pillars__grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 56px; 
+  align-items: center; 
+}
+
+.pillars__gallery { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 18px; 
+}
+
+.pillars__gallery-row { 
+  display: flex; 
+  gap: 18px; 
+}
+
+.pillars__image { 
+  border-radius: var(--radius-md); 
+  object-fit: cover; 
+  width: 100%; 
+  aspect-ratio: 273/201; 
+  box-shadow: var(--shadow-sm); 
+}
+
+.pillars__image--wide { 
+  aspect-ratio: 563/201; 
+}
+
+.pillars__list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 22px; 
+}
+
+.pillars__list li { 
+  font-size: 17px; 
+  line-height: 1.7; 
+  color: var(--color-text-secondary); 
+}
+
+.pillars__list strong { 
+  color: var(--color-text-primary); 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+}
+
+/* ---------- FOUNDERS ---------- */
+.founders { 
+  padding: 80px 0; 
+}
+
+.founders__grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, minmax(0, 320px)); 
+  gap: 24px; 
+  justify-content: center; 
+}
+
+@media (max-width: 768px) {
+  .founders__grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+.founder-card { 
+  text-align: center; 
+}
+
+/* ---------- ANIMATED SKELETON PHOTO CONTAINER ---------- */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    background-color: #e5e7eb;
+  }
+  50% {
+    background-color: #f3f4f6;
+  }
+}
+
+.founder-card__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  border-radius: var(--radius-lg, 16px);
+  /* Replaced var(--color-green) with animated light gray skeleton */
+  animation: skeleton-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary, #6b7280);
+  font-family: var(--font-body);
+  font-size: 14px;
+  margin-bottom: 18px;
+  overflow: hidden; /* Keeps image inside rounded corners */
+  position: relative;
+}
+
+.founder-card__img {
+  position: relative;
+  z-index: 1; /* Sits cleanly over the skeleton background */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.founder-card__name { 
+  font-family: var(--font-heading); 
+  font-weight: 700; 
+  font-size: 20px; 
+  color: var(--color-text-primary, #111827); 
+  margin: 0 0 4px; 
+}
+
+.founder-card__title { 
+  font-size: 15px; 
+  color: var(--color-text-secondary, #6b7280); 
+  margin: 0; 
+}
+
+/* ---------- RESPONSIVE STYLES ---------- */
+@media (max-width: 1024px) {
+  /* --- Hero Mobile Ordering --- */
+  .mission-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .mission-hero__col-left {
+    display: contents; /* Allows children to participate directly in order positioning */
+  }
+
+  .mission-hero .eyebrow {
+    order: 1;
+  }
+
+  .mission-hero__title {
+    order: 2;
+    margin-bottom: 0;
+  }
+
+  .mission-hero__col-right {
+    order: 3;
+  }
+
+  .mission-hero__btn {
+    order: 4;
+    margin-top: 10px;
+  }
+
+  /* --- Section Grids Mobile Ordering --- */
+  .mission-statement__grid, 
+  .pillars__grid { 
+    grid-template-columns: 1fr; 
+  }
+
+  /* Core Pillars: Text first (1), Images second (2) */
+  .pillars__content {
+    order: 1;
+  }
+
+  .pillars__gallery { 
+    order: 2; 
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-hero { 
+    padding: 80px 0 60px; 
+  }
+
+  .mission-statement, 
+  .pillars, 
+  .founders { 
+    padding: 56px 0; 
+  }
+
+  .founders__grid { 
+    grid-template-columns: 1fr; 
+    max-width: 320px; 
+    margin: 0 auto; 
+  }
+
+  .pillars__gallery-row { 
+    flex-direction: column; 
+  }
+}
