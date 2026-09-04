@@ -2,7 +2,7 @@ from django.urls import path
 from .views import index_view, mission_view, about_us, contact_us, send_message, privacy_policy, refund_policy, terms_of_services, projects_page, donation_page
 
 urlpatterns = [
-    path('Home/', index_view, name="home"),
+    path('', index_view, name="home"),
     path('Mission/', mission_view, name="mission"),
     path('AboutUs/', about_us, name='aboutus'),
     path('ContactUs/', contact_us, name="contactus"),
