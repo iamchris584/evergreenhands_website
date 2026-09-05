@@ -10,7 +10,7 @@ from .models import Donation, ContactForm, Projects, TeamMemeber
 
 @admin.register(Donation)
 class Donationadmin(ModelAdmin):
-    list_display = ['id', "full_name", "email", "stripe_payment_intent_id", "amount", "status", "created_date", "uuid"]
+    list_display = ['id', "full_name", "email", "sumup_checkout_id", "amount", "status", "created_date", "uuid"]
 
 
 @admin.register(ContactForm)

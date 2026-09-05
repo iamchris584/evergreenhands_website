@@ -9,35 +9,30 @@ import re
 
 class DonationForm(forms.ModelForm):
     privacy_consent = forms.BooleanField(
-            required=True, 
-            error_messages={'required': 'You must agree to our privacy policy.'}
-            
-        )
+        required=True,
+        error_messages={
+            'required': 'You must agree to our privacy policy.'
+        }
+    )
+
     class Meta:
         model = Donation
-        exclude = ['created_date', 'status', 'stripe_payment_intent_id', 'uuid']
+        exclude = ['created_date', 'status', 'sumup_checkout_id', 'uuid']
 
     def clean_full_name(self):
-        # full_name = strip_tags(self.cleaned_data.get('full_name', '')).strip()
         full_name = self.cleaned_data.get('full_name')
-        if len(full_name) < 2:
-            raise ValidationError("name too short must be atleast 2 characters long")
-        if not re.match(r"^[A-Za-z\s'\-]+$", full_name):
-            raise ValidationError("Name contains invalid characters or code tags.")
-        return full_name
 
-    def clean_amount(self):
-        amount = self.cleaned_data.get('amount')
-        if amount < 0:
-            raise ValidationError('negative values not allowed')
-        if amount < 10:
-            raise ValidationError("not accepted")
-        return amount
-    def clean_email(self):
-            email = self.cleaned_data.get('email', '').strip().lower()
-            if re.search(r'[<>]', email):
-                raise ValidationError("Invalid characters in email address.")
-            return email
+        if len(full_name) < 2:
+            raise ValidationError(
+                "Name too short must be at least 2 characters long"
+            )
+
+        if not re.match(r"^[A-Za-z\s'\-]+$", full_name):
+            raise ValidationError(
+                "Name contains invalid characters or code tags."
+            )
+
+        return full_name
 
 # class ContactUs(ModelForm):
 #     class Meta:

@@ -16,7 +16,7 @@ class Donation(models.Model):
     email = models.EmailField(null=False)
     amount = models.IntegerField()
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    stripe_payment_intent_id = models.CharField(null=True)
+    sumup_checkout_id = models.CharField(max_length=255, null=True, blank=True)
     status = models.CharField(choices=choice, default='P')
     created_date = models.DateField(auto_now_add=True)
 
