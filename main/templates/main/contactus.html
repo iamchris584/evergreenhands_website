@@ -25,8 +25,19 @@
         Have a question, need support, or interested in partnering, volunteering, or joining our Board of Trustees? We’d love to hear from you. 
       </p>
     </div>
-
+    {% if footer %}
     <div class="contact-hero__details" data-animate="fade-up" data-animate-delay="100">
+      <p class="contact-hero__lets-talk">Let's talk!</p>
+      <p class="contact-hero__detail-line"><a href="tel:+447447466633">{{footer.phone_number}}</a></p>
+      <p class="contact-hero__detail-line"><a href="mailto:info@evergreenhands.org">{{footer.email}}</a></p>
+
+      <p class="contact-hero__office-label">Head Office</p>
+      <address class="contact-hero__address">
+        {{footer.address|linebreaksbr }}
+      </address>
+    </div>
+    {% else %}
+       <div class="contact-hero__details" data-animate="fade-up" data-animate-delay="100">
       <p class="contact-hero__lets-talk">Let's talk!</p>
       <p class="contact-hero__detail-line"><a href="tel:+447447466633">+44 7447 466633</a></p>
       <p class="contact-hero__detail-line"><a href="mailto:info@evergreenhands.org">info@evergreenhands.org</a></p>
@@ -37,6 +48,8 @@
         EH52 6GE, Scotland
       </address>
     </div>
+    {% endif %}
+
 
   </div>
 </section>

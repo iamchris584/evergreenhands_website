@@ -71,3 +71,5 @@ class Footer(models.Model):
 
     def __str__(self):
         return "Footer Settings"
+
+

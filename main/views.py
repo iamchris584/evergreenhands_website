@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.conf import settings
 from DonationPage.models import Projects, TeamMemeber
-from SiteManagement.models import HomePage, AboutUs,  Our_Mission
+from SiteManagement.models import HomePage, AboutUs,  Our_Mission, Footer
 
 
 # Create your views here.
@@ -29,7 +29,9 @@ def about_us(request):
     return render(request, 'main/aboutus.html', context)
 
 def contact_us(request):
-    return render(request, 'main/contactus.html')
+    footer = Footer.objects.all().first()
+    context = {'footer':footer}
+    return render(request, 'main/contactus.html', context)
 
 def privacy_policy(request):
     return render(request, 'main/privacy.html')
